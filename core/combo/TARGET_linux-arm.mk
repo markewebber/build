@@ -68,16 +68,52 @@ endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-TARGET_arm_CFLAGS :=    -O2 \
+ifeq ($(TARGET_USE_O3),true)
+TARGET_arm_CFLAGS :=    -O3 \
+                        -fno-tree-vectorize \
+                        -fno-inline-functions \
+                        -fomit-frame-pointer \
+                        -fstrict-aliasing \
+                        -Wstrict-aliasing=3 \
+                        -Werror=strict-aliasing
+else
+TARGET_arm_CFLAGS :=    -Os \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-                        -funswitch-loops
+                        -Wstrict-aliasing=3 \
+                        -Werror=strict-aliasing \
+                        -fno-zero-initialized-in-bss \
+                        -funswitch-loops \
+                        -fno-tree-vectorize \
+                        -funsafe-loop-optimizations \
+                        -Wno-unused-parameter \
+                        -Wno-unused-value \
+                        -Wno-unused-function
+endif
 
 # Modules can choose to compile some source as thumb.
-TARGET_thumb_CFLAGS :=  -mthumb \
-                        -Os \
-                        -fomit-frame-pointer \
-                        -fno-strict-aliasing
+ifeq ($(TARGET_USE_O3),true)
+    TARGET_thumb_CFLAGS :=  -mthumb \
+                            -O3 \
+                            -fno-tree-vectorize \
+                            -fno-inline-functions \
+                            -fno-unswitch-loops \
+                            -fomit-frame-pointer \
+                            -fstrict-aliasing \
+                            -Wstrict-aliasing=3 \
+                            -Werror=strict-aliasing \
+                            -Wno-unused-parameter \
+                            -Wno-unused-value \
+                            -Wno-unused-function
+else
+    TARGET_thumb_CFLAGS :=  -mthumb \
+                            -Os \
+                            -fomit-frame-pointer \
+                            -fstrict-aliasing \
+                            -Wstrict-aliasing=3 \
+                            -Werror=strict-aliasing \
+                            -Wno-unused-parameter
+endif
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
