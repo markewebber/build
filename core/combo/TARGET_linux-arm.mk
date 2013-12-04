@@ -46,9 +46,9 @@ else
 TARGET_GCC_VERSION_ARM := $(TARGET_GCC_VERSION_ARM)
 endif
 
-# Specify Target Custom GCC Chains to use:
+# Target Custom GCC Chains
 TARGET_GCC_VERSION_AND := 4.8
-TARGET_GCC_VERSION_ARM := 4.8
+TARGET_GCC_VERSION_ARM := 4.7
 
 # Highly experimental, use with extreme caution.
 # -fgcse-las & -fpredictive-commoning = memory optimization flags, does not increase code size. gcse-las is not envoked by any -*O flags.
