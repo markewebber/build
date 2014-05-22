@@ -35,7 +35,7 @@ TARGET_ARCH_VARIANT := armv5te
 endif
 
 ifeq ($(strip $(TARGET_GCC_VERSION_AND)),)
-TARGET_GCC_VERSION_AND := 4.7
+TARGET_GCC_VERSION_AND := 4.8
 else
 TARGET_GCC_VERSION_AND := $(TARGET_GCC_VERSION_AND)
 endif
@@ -46,9 +46,6 @@ else
 TARGET_GCC_VERSION_ARM := $(TARGET_GCC_VERSION_ARM)
 endif
 
-# Target Custom GCC Chains
-TARGET_GCC_VERSION_AND := 4.8
-TARGET_GCC_VERSION_ARM := 4.7
 
 # Highly experimental, use with extreme caution.
 # -fgcse-las & -fpredictive-commoning = memory optimization flags, does not increase code size. gcse-las is not envoked by any -*O flags.
