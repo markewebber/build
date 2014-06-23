@@ -14,9 +14,7 @@ endef
 
 
 CLANG_CONFIG_EXTRA_CFLAGS := \
-  -O3 \
   -D__compiler_offsetof=__builtin_offsetof \
-  -fstrict-aliasing
 
 CLANG_CONFIG_UNKNOWN_CFLAGS := \
   -funswitch-loops
