@@ -41,7 +41,7 @@ TARGET_GCC_VERSION_AND := $(TARGET_GCC_VERSION_AND)
 endif
 
 ifeq ($(strip $(TARGET_GCC_VERSION_ARM)),)
-TARGET_GCC_VERSION_ARM := 4.7
+TARGET_GCC_VERSION_ARM := 4.7-sm
 else
 TARGET_GCC_VERSION_ARM := $(TARGET_GCC_VERSION_ARM)
 endif
@@ -179,15 +179,12 @@ TARGET_GLOBAL_CFLAGS += \
 			-ffunction-sections \
 			-fdata-sections \
 			-funwind-tables \
-			-fstrict-aliasing \
 			-fstack-protector \
 			-Wa,--noexecstack \
 			-Werror=format-security \
 			-D_FORTIFY_SOURCE=2 \
 			-fno-short-enums \
 			$(arch_variant_cflags) \
-			-Wno-error=unused-parameter \
-			-Wno-error=unused-but-set-variable \
 			-include $(android_config_h) \
 			-I $(dir $(android_config_h))
 
@@ -220,7 +217,7 @@ endif
 # in their exported C++ functions). Also, GCC 4.5 has already
 # removed the warning from the compiler.
 #
-TARGET_GLOBAL_CFLAGS += -Wno-psabi -fstrict-aliasing
+TARGET_GLOBAL_CFLAGS += -Wno-psabi
 
 TARGET_GLOBAL_LDFLAGS += \
 			-Wl,-z,noexecstack \
@@ -231,9 +228,9 @@ TARGET_GLOBAL_LDFLAGS += \
 			-Wl,--icf=safe \
 			$(arch_variant_ldflags)
 
-TARGET_GLOBAL_CFLAGS += -mthumb-interwork -fstrict-aliasing
+TARGET_GLOBAL_CFLAGS += -mthumb-interwork
 
-TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden -fstrict-aliasing
+TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS := \
@@ -242,11 +239,7 @@ TARGET_RELEASE_CFLAGS := \
 			-Wstrict-aliasing=2 \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
-			-frename-registers \
-			-fno-ipa-cp-clone \
-			-fno-vect-cost-model \
-			-Wno-error=unused-parameter \
-			-Wno-error=unused-but-set-variable
+			-frename-registers
 
 ifeq ($(strip $(OPT_MEMORY)),true)
 TARGET_RELEASE_CFLAGS += $(OPT_MEM)
