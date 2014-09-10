@@ -113,5 +113,9 @@ $(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
 $(info   BUILD_ID=$(BUILD_ID))
 $(info   OUT_DIR=$(OUT_DIR))
 $(info   TARGET_TOOLS_PREFIX=$(TARGET_TOOLS_PREFIX))
+ifeq ($(CYNGN_TARGET),true)
+$(info   CYNGN_TARGET=$(CYNGN_TARGET))
+$(info   CYNGN_FEATURES=$(CYNGN_FEATURES))
+endif
 $(info ============================================)
 endif
