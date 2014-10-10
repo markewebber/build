@@ -186,14 +186,15 @@ all_product_configs := $(call get-product-makefiles,\
 else
   ifneq ($(SPIRIT_BUILD),)
     all_product_configs := $(shell ls device/*/$(SPIRIT_BUILD)/spirit.mk)
+
   else
     # Read in all of the product definitions specified by the AndroidProducts.mk
     # files in the tree.
     all_product_configs := $(get-all-product-makefiles)
   endif # SPIRIT_BUILD
 endif
-
 ifeq ($(SPIRIT_BUILD),)
+
 # Find the product config makefile for the current product.
 # all_product_configs consists items like:
 # <product_name>:<path_to_the_product_makefile>

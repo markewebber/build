@@ -477,7 +477,6 @@ function print_lunch_menu()
     else
        echo "Lunch menu... pick a combo:"
     fi
-
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
@@ -487,6 +486,7 @@ function print_lunch_menu()
     done | column
 
     if [ "z${SPIRIT_DEVICES_ONLY}" != "z" ]; then
+
        echo "... and don't forget the bacon!"
     fi
 
@@ -513,6 +513,7 @@ function breakfast()
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
     for f in `/bin/ls vendor/spirit/vendorsetup.sh 2> /dev/null`
+
         do
             echo "including $f"
             . $f
@@ -529,10 +530,12 @@ function breakfast()
             lunch $target
         else
             # This is probably just the CM model name
+
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
             lunch spirit_$target-$variant
+
         fi
     fi
     return $?
@@ -700,7 +703,9 @@ function eat()
             done
             echo "Device Found.."
         fi
+
     if (adb shell cat /system/build.prop | grep -q "ro.spirit.device=$SPIRIT_BUILD");
+
     then
         # if adbd isn't root we can't write to /cache/recovery/
         adb root
@@ -729,8 +734,8 @@ EOF
     fi
     return $?
     else
+
         echo "The connected device does not appear to be $SPIRIT_BUILD, run away!"
-    fi
 }
 
 function omnom
