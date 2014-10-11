@@ -525,6 +525,23 @@ else if get_stage("%(bcb_dev)s", "stage") == "3/3" then
   script.ValidateSignatures("data")
   script.Unmount("/data")
 
+  script.Print("                                               ");
+  script.Print("                           ____                ");
+  script.Print("                          /    \               ");
+  script.Print("                       /\| * *  |/\            ");
+  script.Print("  ______             __\    0   / /__    __    ");    
+  script.Print(" /      \           /  |\        //  |  /  |   ");    
+  script.Print("/$$$$$$  |  ______  $$/  \______/ $$/  _$$ |_  "); 
+  script.Print("$$ \__$$/  /      \ /  | /      \ /  |/ $$   | ");
+  script.Print("$$      \ /$$$$$$  |$$ |/$$$$$$  |$$ |$$$$$$/  ");
+  script.Print(" $$$$$$  |$$ |  $$ |$$ |$$ |  $$/ $$ |  $$ | _ "); 
+  script.Print("/  \__$$ |$$ |__$$ |$$ |$$ |      $$ |  $$ |/ |");
+  script.Print("$$    $$/ $$    $$/ $$ |$$ |      $$ |  $$  $/ ");
+  script.Print(" $$$$$$/  $$$$$$$/  $$/ $$/       $$/    $$$/  ");  
+  script.Print("          $$ |                                 ");                                 
+  script.Print("          $$ |                                 ");                                 
+  script.Print("          $$/                                  ");
+
   if "selinux_fc" in OPTIONS.info_dict:
     WritePolicyConfig(OPTIONS.info_dict["selinux_fc"], output_zip)
 
